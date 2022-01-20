@@ -1,0 +1,28 @@
+@import 'variables';
+
+@import '~bootstrap/scss/bootstrap';
+@import '~sweetalert2/dist/sweetalert2';
+@import '~@fortawesome/fontawesome-svg-core/styles';
+
+@import 'elements/card';
+@import 'elements/navbar';
+@import 'elements/buttons';
+@import 'elements/transitions';
+
+@import 'components/server-error';
+
+.btn {
+  transition-duration: 0.2s;
+  font-weight: 600;
+  cursor: pointer;
+  &.round {
+    border-radius: 999px;
+    border-color: rgb(207, 217, 222);
+    font-size: 15px;
+    color: #000;
+    padding: 6px 15px;
+    &:hover {
+      background-color: rgba(15, 10, 25, 0.1);
+    }
+  }
+}
