@@ -55,6 +55,7 @@ Route::put('letters/{letter}', [LetterController::class, 'update'])->name('lette
 Route::delete('letters/{letter}', [LetterController::class, 'destroy'])->name('letters.destroy');
 
 Route::get('lettersInfinite', [LetterController::class, 'infinite'])->name('letters.infinite');
+Route::get('lettersInfinite', [LetterController::class, 'infinite'])->name('letters.infinite');
 Route::get('postsi', function (Request $request) {
     $posts = App\models\Letter::orderBy('id', 'desc');
     return $posts->paginate(40);

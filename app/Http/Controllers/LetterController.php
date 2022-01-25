@@ -29,27 +29,7 @@ class LetterController extends Controller
 
     public function index(Request $request)
     {
-        if($request->search_text) {
-            if ($request->search_part == '1') {
-                $column = 'contents'; // 편지내용
-                $value = $request->search_text;
-                $allLetters = Letter::with(['user'])->where($column, 'LIKE BINARY', '%'.$value.'%')->get()->sortByDesc('id');
-            } else if($request->search_part == '2') {
-                $column = 'user_id'; // 글쓴이
-                $value = User::select('id')->where('name', $request->search_text)->get();
-                if(count($value) > 0) {
-                    $allLetters = Letter::with(['user'])->where($column, $value[0]['id'])->get()->sortByDesc('id');
-                } else {
-                    $allLetters = [];
-                }
-            } else if($request->search_part == '3') {
-                $column = 'animal_name'; // 동물이름
-                $value = $request->search_text;
-                $allLetters = Letter::with(['user'])->where($column, 'LIKE BINARY', '%'.$value.'%')->get()->sortByDesc('id');
-            }
-        } else {
-            $allLetters = Letter::with(['user'])->get()->sortByDesc('id');
-        }
+        $allLetters = Letter::with(['user'])->get()->sortByDesc('id');
         $filteredLetterss = LetterResource::collection($allLetters);
         return $filteredLetterss;
     }
